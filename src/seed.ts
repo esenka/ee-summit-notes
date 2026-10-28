@@ -1,0 +1,103 @@
+import type { Note } from './types'
+
+const minutesAgo = (m: number) => new Date(Date.now() - m * 60_000).toISOString()
+
+/** Example notes so the room looks inhabited on first load (demo mode only). */
+export const SEED_NOTES: Note[] = [
+  {
+    id: 'seed-01', anchorId: 'brain',
+    what: 'Cognitive load while wayfinding in hospitals',
+    how: 'Mobile EEG walks through real corridors',
+    why: 'Confusing layouts exhaust patients before they reach the ward',
+    wish: 'Which design cue actually lowers load: signage, light, or geometry?',
+    methods: ['EEG', 'Fieldwork'], author: 'Noor, PhD student', hidden: false, createdAt: minutesAgo(840),
+  },
+  {
+    id: 'seed-02', anchorId: 'eyes',
+    what: 'Gaze patterns in daylit vs. artificially lit offices',
+    how: 'Wearable eye tracking over full workdays',
+    why: 'Where people look tells us what the room asks of them',
+    wish: 'How gaze comfort relates to long-term eye strain',
+    methods: ['Eye tracking'], author: null, hidden: false, createdAt: minutesAgo(760),
+  },
+  {
+    id: 'seed-03', anchorId: 'heart',
+    what: 'Heart rate variability in biophilic interiors',
+    how: 'Chest-strap HRV during 20-minute sits in different rooms',
+    why: 'Looking for a dose-response curve for greenery',
+    wish: 'Does the effect survive after the novelty wears off?',
+    methods: ['Heart rate / HRV'], author: 'Mateo, environmental psych', hidden: false, createdAt: minutesAgo(700),
+  },
+  {
+    id: 'seed-04', anchorId: 'skin',
+    what: 'Thermal comfort at the desk level',
+    how: 'Skin temperature sensors plus right-now comfort votes',
+    why: 'HVAC standards average away the people who are always cold',
+    wish: 'Personal comfort models that work without wearables',
+    methods: ['Environmental sensors', 'Surveys'], author: 'Building services team', hidden: false, createdAt: minutesAgo(645),
+  },
+  {
+    id: 'seed-05', anchorId: 'ears',
+    what: 'Soundscapes of open-plan studios',
+    how: 'Binaural recordings and annoyance surveys',
+    why: 'Noise complaints are the #1 post-occupancy issue we see',
+    wish: 'A perceptual metric that predicts complaints better than dB(A)',
+    methods: ['Environmental sensors', 'Surveys'], author: null, hidden: false, createdAt: minutesAgo(590),
+  },
+  {
+    id: 'seed-06', anchorId: 'gut',
+    what: 'The "gut feeling" of entering a space',
+    how: 'Interoceptive awareness tasks + first-impression interviews',
+    why: 'Fast judgements decide whether people stay or leave',
+    wish: 'Whether gut responses can be trained or only designed for',
+    methods: ['Interviews'], author: 'Ida, architect', hidden: false, createdAt: minutesAgo(520),
+  },
+  {
+    id: 'seed-07', anchorId: 'window',
+    what: 'Daylight exposure and circadian rhythm',
+    how: 'Light-dose badges worn for two weeks',
+    why: 'Most of us get our daylight through glass now',
+    wish: 'The minimum daily light dose a facade must deliver',
+    methods: ['Environmental sensors'], author: null, hidden: false, createdAt: minutesAgo(450),
+  },
+  {
+    id: 'seed-08', anchorId: 'plant',
+    what: 'Stress recovery with indoor planting',
+    how: 'Cortisol sampling before/after breaks in planted rooms',
+    why: 'Plants are cheap; evidence for them is still thin',
+    wish: 'Real plants vs. very good fake ones: does the body know?',
+    methods: ['Cortisol / biomarkers'], author: 'Lab group, TU', hidden: false, createdAt: minutesAgo(380),
+  },
+  {
+    id: 'seed-09', anchorId: 'chair',
+    what: 'Posture drift in long meetings',
+    how: 'Pressure-mat seats and periodic discomfort ratings',
+    why: 'Furniture gets blamed for what the meeting culture does',
+    wish: 'How much fidgeting is healthy rather than a design failure',
+    methods: ['Motion capture', 'Surveys'], author: null, hidden: false, createdAt: minutesAgo(300),
+  },
+  {
+    id: 'seed-10', anchorId: 'walls',
+    what: 'Perceived spaciousness of small apartments',
+    how: 'VR mockups with controlled ceiling heights and openings',
+    why: 'Cities are densifying; perceived space must do more with less',
+    wish: 'Which illusions of space hold up after a month of living there',
+    methods: ['VR / simulation'], author: 'Housing researcher', hidden: false, createdAt: minutesAgo(220),
+  },
+  {
+    id: 'seed-11', anchorId: 'feet',
+    what: 'Walking pace as a signal of spatial stress',
+    how: 'Anonymous motion tracking in museum galleries',
+    why: 'Feet vote honestly; people rush through what unsettles them',
+    wish: 'Separating crowding effects from the architecture itself',
+    methods: ['Motion capture', 'Fieldwork'], author: null, hidden: false, createdAt: minutesAgo(140),
+  },
+  {
+    id: 'seed-12', anchorId: 'whole-body',
+    what: 'Sense of presence in restorative spaces',
+    how: 'Breath, HRV and skin conductance during quiet occupation',
+    why: 'Restoration is the promise of neuroarchitecture, so we should measure it',
+    wish: 'A field-ready "restorativeness" protocol under 10 minutes',
+    methods: ['Heart rate / HRV', 'Skin conductance'], author: 'Esen', hidden: false, createdAt: minutesAgo(60),
+  },
+]

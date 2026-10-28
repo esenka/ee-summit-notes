@@ -1,0 +1,18 @@
+import { chromium } from 'playwright-core'
+
+const browser = await chromium.launch({ channel: 'chrome', headless: true })
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' })
+await page.goto('http://localhost:5180/')
+await page.waitForLoadState('networkidle')
+await page.waitForTimeout(2200)
+const before = await page.screenshot()
+await page.click('button:has-text("Hide post-its")')
+await page.waitForTimeout(600)
+const hidden = await page.screenshot({ path: '/tmp/ees-test/30-hidden.png' })
+console.log('scene changed after hide (want true):', !before.equals(hidden))
+console.log('button now reads Show:', await page.locator('button:has-text("Show post-its")').isVisible())
+await page.click('button:has-text("Show post-its")')
+await page.waitForTimeout(600)
+const shown = await page.screenshot()
+console.log('post-its back (want true):', !hidden.equals(shown))
+await browser.close()

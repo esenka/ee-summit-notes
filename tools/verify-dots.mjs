@@ -1,0 +1,16 @@
+import { chromium } from 'playwright-core'
+
+const browser = await chromium.launch({ channel: 'chrome', headless: true })
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' })
+await page.goto('http://localhost:5180/')
+await page.waitForLoadState('networkidle')
+await page.waitForTimeout(2200)
+console.log('badges before (want 16):', await page.locator('.anchor-badge').count())
+await page.click('button:has-text("Hide post-its")')
+await page.waitForTimeout(600)
+console.log('badges after hide (want 0):', await page.locator('.anchor-badge').count())
+await page.screenshot({ path: '/tmp/ees-test/31-all-hidden.png' })
+await page.click('button:has-text("Show post-its")')
+await page.waitForTimeout(600)
+console.log('badges after show (want 16):', await page.locator('.anchor-badge').count())
+await browser.close()
